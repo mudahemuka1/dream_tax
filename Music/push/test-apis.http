@@ -1,0 +1,91 @@
+### Smart Farming Advisory System - API Testing
+
+### Create Farmer
+POST http://localhost:8080/api/farmers
+Content-Type: application/json
+
+{
+    "name": "Jean Paul Habimana",
+    "location": "Kigali, Rwanda",
+    "phoneNumber": "+250780001001"
+}
+
+### Create Crop
+POST http://localhost:8080/api/crops
+Content-Type: application/json
+
+{
+    "cropName": "Maize",
+    "idealSoil": "Loam",
+    "idealSeason": "Rainy"
+}
+
+### Create Disease
+POST http://localhost:8080/api/diseases
+Content-Type: application/json
+
+{
+    "symptoms": "Yellowing leaves and stunted growth",
+    "preventionMethod": "Use resistant varieties and proper drainage",
+    "medicineType": "Fungicide treatment"
+}
+
+### Create Fertilizer
+POST http://localhost:8080/api/fertilizers
+Content-Type: application/json
+
+{
+    "nutrientContent": "NPK 20-10-10",
+    "recommendedDose": "50 kg/hectare"
+}
+
+### Get All Farmers
+GET http://localhost:8080/api/farmers
+
+### Get All Crops
+GET http://localhost:8080/api/crops
+
+### Get Crop Recommendations
+GET http://localhost:8080/api/crops/recommend?soil=Loam&season=Rainy
+
+### Get Crop Advice for Farmer
+POST http://localhost:8080/api/recommendations/crop-advice
+Content-Type: application/json
+
+{
+    "farmerId": 1,
+    "soilType": "Loam",
+    "season": "Rainy"
+}
+
+### Get Disease Advice
+POST http://localhost:8080/api/recommendations/disease-advice
+Content-Type: application/json
+
+{
+    "farmerId": 1,
+    "cropId": 1,
+    "symptoms": "Yellowing leaves"
+}
+
+### Get Fertilizer Advice
+POST http://localhost:8080/api/recommendations/fertilizer-advice
+Content-Type: application/json
+
+{
+    "farmerId": 1,
+    "cropId": 1
+}
+
+### Update Farmer
+PUT http://localhost:8080/api/farmers/1
+Content-Type: application/json
+
+{
+    "name": "Jean Paul Habimana Updated",
+    "location": "Kigali, Rwanda",
+    "phoneNumber": "+250780001001"
+}
+
+### Delete Farmer
+DELETE http://localhost:8080/api/farmers/1
